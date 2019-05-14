@@ -20,4 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/superadmin', 'trackingController@superadmin')->name('superadmin');
 Route::get('/superadmin/create', 'trackingController@superadmin_create')->name('superadmin.create');
+Route::get('/admin', 'trackingController@superadmin')->name('superadmin');
+Route::get('/admin/create', 'trackingController@superadmin_create')->name('superadmin.create');
 Route::resource('tracking','trackingController');

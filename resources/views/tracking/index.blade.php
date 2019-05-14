@@ -79,7 +79,39 @@
 											</div>
 	                                    </div>     
                                     </div>
-                                    
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="sopir">Dari Kota</label>
+                                                <input type="text" class="form-control" id="sopir" placeholder="Enter Nama Sopir">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12" >
+                                            <div class="form-group">
+                                                <label for="customer">Tujuan</label>
+                                                <input type="text" class="form-control" id="customer" placeholder="Enter Nama Customer">
+                                            </div>
+                                        </div>     
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="sopir">Jumlah BOP</label>
+                                                <input type="text" class="form-control" id="sopir" placeholder="Enter Nama Sopir">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12" >
+                                            <div class="form-group">
+                                                <label for="customer">Jumlah Tagihan</label>
+                                                <input type="text" class="form-control" id="customer" placeholder="Enter Nama Customer">
+                                            </div>
+                                        </div>     
+                                    </div>
+                                    <h3> Revenue didapat dari Tagihan : 1,1 <br>
+                                        Profit Didapat dari Revenue - Jumlah BOP
+                                      </h3>
                                     <div class="form-group">
                                     	<div class="row" style="padding: 15px 0;">
                                             <div class="col-sm-12">
