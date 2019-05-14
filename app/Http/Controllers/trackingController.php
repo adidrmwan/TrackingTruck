@@ -88,10 +88,10 @@ class trackingController extends Controller
     public function superadmin_create() {
         return view('superadmin.create');
     }
-    public function admin() {
-        return view('admin.index');
+    public function gm() {
+        return view('gm.index');
     }
-    public function admin_create() {
-        return view('admin.create');
+    public function finance() {
+        return view('finance.index');
     }
 }
