@@ -22,9 +22,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/superadmin', 'trackingController@superadmin')->name('superadmin');
-Route::get('/superadmin/create', 'trackingController@superadmin_create')->name('superadmin.create');
-Route::resource('tracking','trackingController');
+Route::get('/superadmin', 'TrackingController@superadmin')->name('superadmin');
+Route::get('/superadmin/create', 'TrackingController@superadmin_create')->name('superadmin.create');
+Route::resource('tracking','TrackingController');
 
 // Route untuk user : superadmin
 Route::group(['prefix' => 'superadmin', 'middleware' => ['auth','role:superadmin']], function(){
@@ -40,3 +40,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']], funct
 	})->name('admin.dashboard');
 });
 
+// Route untuk user : finance manager
+Route::group(['prefix' => 'fm', 'middleware' => ['auth','role:finance_manager']], function(){
+	Route::get('/', 'Manager\FinanceManager@dashboard')->name('finance_manager.dashboard');
+});
+
+// Route untuk user : general manager
+Route::group(['prefix' => 'gm', 'middleware' => ['auth','role:general_manager']], function(){
+	Route::get('/', 'Manager\GeneralManager@dashboard')->name('general_manager.dashboard');
+});
