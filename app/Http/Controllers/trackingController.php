@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class trackingController extends Controller
+class TrackingController extends Controller
 {
     /**
      * Display a listing of the resource.
