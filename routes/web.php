@@ -12,8 +12,12 @@
 */
 
 Route::get('/', function () {
+	if (Auth::check()) {
+		return redirect()->route('home');
+	}
+
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
@@ -23,3 +27,18 @@ Route::get('/superadmin/create', 'trackingController@superadmin_create')->name('
 Route::get('/admin', 'trackingController@superadmin')->name('superadmin');
 Route::get('/admin/create', 'trackingController@superadmin_create')->name('superadmin.create');
 Route::resource('tracking','trackingController');
+
+// Route untuk user : superadmin
+Route::group(['prefix' => 'superadmin', 'middleware' => ['auth','role:superadmin']], function(){
+	Route::get('/', function(){
+		return redirect()->route('tracking.index');
+	})->name('superadmin.dashboard');
+});
+
+// Route untuk user : admin
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']], function(){
+	Route::get('/', function(){
+		return redirect()->route('tracking.index');
+	})->name('admin.dashboard');
+});
+
