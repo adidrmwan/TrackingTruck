@@ -22,10 +22,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/gm', 'trackingController@gm')->name('gm');
+Route::get('/finance', 'trackingController@finance');
+Route::get('/superadmin', 'TrackingController@superadmin')->name('superadmin');
 Route::get('/superadmin/create', 'TrackingController@superadmin_create')->name('superadmin.create');
 Route::resource('tracking','TrackingController');
 Route::get('/admin', 'trackingController@superadmin')->name('superadmin');
 Route::get('/admin/create', 'trackingController@superadmin_create')->name('superadmin.create');
+>>>>>>> 8aa4d01beadb21ccd5f5821f65042f8bb4e2a393
 
 // Route untuk user : superadmin
 Route::group(['prefix' => 'superadmin', 'middleware' => ['auth','role:superadmin']], function(){
