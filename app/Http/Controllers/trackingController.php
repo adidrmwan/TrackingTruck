@@ -82,16 +82,5 @@ class TrackingController extends Controller
         //
     }
 
-    public function superadmin() {
-        return view('superadmin.index');
-    }
-    public function superadmin_create() {
-        return view('superadmin.create');
-    }
-    public function admin() {
-        return view('admin.index');
-    }
-    public function admin_create() {
-        return view('admin.create');
-    }
+    
 }

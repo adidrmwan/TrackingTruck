@@ -7,5 +7,10 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    //
+    public function admin() {
+        return view('admin.index');
+    }
+    public function admin_create() {
+        return view('admin.create');
+    }
 }
