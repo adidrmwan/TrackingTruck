@@ -4,23 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TrackingController extends Controller
+class TruckingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        return view ('tracking.index');
+        $this->middleware('auth');
+        $this->middleware('role:admin');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        return view ('trucking.index');
+    }
+
     public function create()
     {
         //
@@ -34,7 +30,7 @@ class TrackingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -82,10 +78,5 @@ class TrackingController extends Controller
         //
     }
 
-    public function superadmin() {
-        return view('superadmin.index');
-    }
-    public function superadmin_create() {
-        return view('superadmin.create');
-    }
+    
 }

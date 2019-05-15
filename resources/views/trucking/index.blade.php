@@ -1,6 +1,6 @@
 @extends('layouts.manager-app')
 
-@section('title', 'TRACKING')
+@section('title', 'TRUCKING')
 
 @section('content')
 <div class="main-container inner-page">
@@ -19,8 +19,8 @@
                             <div id="collapse1" class="panel-collapse collapse show">
                             <div class="card-body">
                                 
-                                <form role="form" action="" method="post" enctype="multipart/form-data">
-                                    
+                                <form role="form" action="{{ route('trucking.store') }}" method="post" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
                                     <div class="form-group">
                                     	<div class="col-sm-4" >
                                            
@@ -52,14 +52,14 @@
                                         <div class="col-sm-4" >
                                         	<div class="form-group">
 											    <label for="no_jo">No JO</label>
-											    <input type="text" class="form-control" id="no_jo" placeholder="Enter No JO">
+											    <input type="number" class="form-control" id="no_jo" name="no_jo" placeholder="Masukkan No JO">
 											</div>
                                         </div>
                                         
                                         <div class="col-sm-4" >
                                         	<div class="form-group">
 											    <label for="no_kendaraan">No Kendaraan</label>
-											    <input type="text" class="form-control" id="no_kendaraan" placeholder="Enter No Kendaraan">
+											    <input type="text" class="form-control" id="no_kendaraan" name="no_kendaraan" placeholder="Masukkan No Kendaraan">
 											</div>
                                         </div>  
                                     </div>
@@ -67,19 +67,51 @@
                                     <div class="form-group">
 	                                    <div class="col-sm-4">
 	                                    	<div class="form-group">
-											    <label for="sopir">Naman Sopir</label>
-											    <input type="text" class="form-control" id="sopir" placeholder="Enter Nama Sopir">
+											    <label for="sopir">Nama Sopir</label>
+											    <input type="text" class="form-control" id="sopir" placeholder="Masukkan Nama Sopir">
 											</div>
 	                                    </div>
 
 	                                    <div class="col-sm-12" >
 	                                    	<div class="form-group">
 											    <label for="customer">Naman Customer</label>
-											    <input type="text" class="form-control" id="customer" placeholder="Enter Nama Customer">
+											    <input type="text" class="form-control" id="customer" placeholder="Masukkan Nama Customer">
 											</div>
 	                                    </div>     
                                     </div>
-                                    
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="sopir">Dari Kota</label>
+                                                <input type="text" class="form-control" id="sopir" placeholder="Enter Nama Sopir">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12" >
+                                            <div class="form-group">
+                                                <label for="customer">Tujuan</label>
+                                                <input type="text" class="form-control" id="customer" placeholder="Enter Nama Customer">
+                                            </div>
+                                        </div>     
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="sopir">Jumlah BOP</label>
+                                                <input type="text" class="form-control" id="sopir" placeholder="Enter Nama Sopir">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12" >
+                                            <div class="form-group">
+                                                <label for="customer">Jumlah Tagihan</label>
+                                                <input type="text" class="form-control" id="customer" placeholder="Enter Nama Customer">
+                                            </div>
+                                        </div>     
+                                    </div>
+                                    <h3> Revenue didapat dari Tagihan : 1,1 <br>
+                                        Profit Didapat dari Revenue - Jumlah BOP
+                                      </h3>
                                     <div class="form-group">
                                     	<div class="row" style="padding: 15px 0;">
                                             <div class="col-sm-12">

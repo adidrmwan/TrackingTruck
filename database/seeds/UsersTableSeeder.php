@@ -26,5 +26,26 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@samudra.com',
             'password' => bcrypt('samudra@2019'),
         ]);
+
+        DB::table('users')->insert([
+            'id' => '3',
+            'name' => 'Finance Manager',
+            'email' => 'finance@samudra.com',
+            'password' => bcrypt('samudra@2019'),
+        ]);
+
+        DB::table('users')->insert([
+            'id' => '4',
+            'name' => 'General Manager',
+            'email' => 'general@samudra.com',
+            'password' => bcrypt('samudra@2019'),
+        ]);
+
+        DB::table('users')->insert([
+            'id' => '5',
+            'name' => 'Pengurus Trucking',
+            'email' => 'trucking@samudra.com',
+            'password' => bcrypt('samudra@2019'),
+        ]);
     }
 }
