@@ -18,7 +18,7 @@
                                 <div class="card card-dark card-elements">
                                     <div id="collapse1" class="panel-collapse collapse show">
                                         <div class="card-body">
-                                            <form role="form" action="{{ route('admin.store') }}" method="post" enctype="multipart/form-data">
+                                            <form role="form" action="{{ route('finance_manager.store') }}" method="post" enctype="multipart/form-data">
                                                 {{ csrf_field() }}
                                                 <div style="padding: 15px;">
                                                     <div class="row">

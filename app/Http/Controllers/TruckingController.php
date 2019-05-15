@@ -11,25 +11,23 @@ class TruckingController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:admin');
+        $this->middleware('role:operator_trucking');
     }
 
     public function index()
     {
-        return view ('trucking.index');
+        $username = Auth::user()->name;
+        $trucking = Trucking::all();
+        return view ('trucking.index', compact('username'))
+                ->with('trucking', json_decode($trucking, true));
     }
 
     public function create()
     {
-        
+        $username = Auth::user()->name;
+        return view ('trucking.create', compact('username'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $user = Auth::user();
@@ -55,9 +53,10 @@ class TruckingController extends Controller
             //perhitungan profit
             $provit = $revenue - $request->jumlah_bop;
             $trucking->provit = $provit;
+            $trucking->status = 0;
             $trucking->save();
             
-            return redirect()->back();
+            return redirect()->route('operator_trucking.index');
         } catch (Exception $e) {
             return redirect()->route('home');
         }

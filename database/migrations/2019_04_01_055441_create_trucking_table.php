@@ -29,6 +29,7 @@ class CreateTruckingTable extends Migration
             $table->string('revenue');
             $table->string('provit');
             $table->string('ket')->nullable();
+            $table->string('status')->nullable();
             $table->date('tanggal');
             $table->integer('entry_user')->nullable();
             $table->timestamps();

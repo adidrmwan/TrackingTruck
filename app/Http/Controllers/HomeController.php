@@ -24,18 +24,18 @@ class HomeController extends Controller
 	    				return redirect()->route('superadmin.dashboard');
 	    			
 	    			case 'admin':
-	    				return redirect()->route('admin.dashboard');
+	    				return redirect()->route('admin.index');
 	    			
 	    			case 'finance_manager':
-	    				return redirect()->route('finance_manager.dashboard');
+	    				return redirect()->route('finance_manager.index');
 	    				break;
 	    			
 	    			case 'general_manager':
-	    				return redirect()->route('general_manager.dashboard');
+	    				return redirect()->route('general_manager.index');
 	    				break;
 	    			
 	    			case 'operator_trucking':
-	    				return redirect()->route('operator_trucking.dashboard');
+	    				return redirect()->route('operator_trucking.index');
 	    				break;
 	    			
 	    			default:
