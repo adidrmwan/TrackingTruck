@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Trucking;
+use Auth;
 
 class TruckingController extends Controller
 {
@@ -19,7 +21,7 @@ class TruckingController extends Controller
 
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -30,7 +32,36 @@ class TruckingController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $user = Auth::user();
+
+        try {
+            $trucking = new Trucking;
+            $trucking->tanggal = $request->input('tanggal');
+            $trucking->no_jo = $request->input('no_jo');
+            $trucking->no_kendaraan = $request->input('no_kendaraan');
+            $trucking->sopir = $request->input('sopir');
+            $trucking->customer = $request->input('customer');
+            $trucking->tujuan_dari = $request->input('tujuan_dari');
+            $trucking->tujuan_ke = $request->input('tujuan_ke');
+            $trucking->jumlah_bop = $request->input('jumlah_bop');
+            $trucking->tagihan = $request->input('tagihan');
+            $trucking->ket = 'BOP ARS';
+            $trucking->entry_user = $user->id;
+            
+            //perhitungan revenue
+            $revenue = $request->tagihan / 1.1;
+            $trucking->revenue = $revenue;
+
+            //perhitungan profit
+            $provit = $revenue - $request->jumlah_bop;
+            $trucking->provit = $provit;
+            $trucking->save();
+            
+            return redirect()->back();
+        } catch (Exception $e) {
+            return redirect()->route('home');
+        }
+
     }
 
     /**
