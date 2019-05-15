@@ -18,7 +18,7 @@
                                 <div class="card card-dark card-elements">
                                     <div id="collapse1" class="panel-collapse collapse show">
                                         <div class="card-body">
-                                            <form role="form" action="{{ route('admin.store') }}" method="post" enctype="multipart/form-data">
+                                            <form role="form" action="{{ route('finance_manager.update', ['id' => $trucking['id_trucking']]) }}" method="post" enctype="multipart/form-data">
                                                 {{ csrf_field() }}
                                                 <div style="padding: 15px;">
                                                     <div class="row">
@@ -29,7 +29,7 @@
                                                                     <span class="input-group-addon">
                                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                                     </span>
-                                                                    <input type='date' class="form-control" name="tanggal" required>
+                                                                    <input type='date' class="form-control" name="tanggal" value="{{ \Carbon\Carbon::createFromDate($year,$month,$day)->format('Y-m-d')}}" required>
                                                                 </div>
                                                                 <script type="text/javascript">
                                                                     $(function () {
@@ -41,13 +41,13 @@
                                                         <div class="col-sm-4" >
                                                         	<div class="form-group">
                     										    <label for="no_jo">No JO</label>
-                    										    <input type="text" class="form-control" id="no_jo" name="no_jo" placeholder="Masukkan No JO">
+                    										    <input type="text" class="form-control" id="no_jo" name="no_jo" placeholder="Masukkan No JO" value="{{ $trucking['no_jo'] }}">
                     										</div>
                                                         </div>
                                                         <div class="col-sm-4" >
                                                         	<div class="form-group">
                     										    <label for="no_kendaraan">No Kendaraan</label>
-                    										    <input type="text" class="form-control" id="no_kendaraan" name="no_kendaraan" placeholder="Masukkan no kendaraan">
+                    										    <input type="text" class="form-control" id="no_kendaraan" name="no_kendaraan" placeholder="Masukkan no kendaraan" value="{{ $trucking['no_kendaraan'] }}">
                     										</div>
                                                         </div>  
                                                     </div>
@@ -56,13 +56,13 @@
                                                         <div class="col-sm-6" >
                                                         	<div class="form-group">
                     										    <label for="customer">Nama Customer</label>
-                    										    <input type="text" class="form-control" id="customer" name="customer" placeholder="Masukkan nama customer">
+                    										    <input type="text" class="form-control" id="customer" name="customer" placeholder="Masukkan nama customer" value="{{ $trucking['customer'] }}">
                     										</div>
                                                         </div>     
                                                         <div class="col-sm-6">
                                                         	<div class="form-group">
                     										    <label for="sopir">Nama Sopir</label>
-                    										    <input type="text" class="form-control" id="sopir" name="sopir" placeholder="Masukkan nama sopir">
+                    										    <input type="text" class="form-control" id="sopir" name="sopir" placeholder="Masukkan nama sopir" value="{{ $trucking['sopir'] }}">
                     										</div>
                                                         </div>
                                                     </div>
@@ -71,13 +71,13 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="sopir">Kota Asal</label>
-                                                                <input type="text" class="form-control" id="tujuan_dari" name="tujuan_dari" placeholder="Masukkan kota asal">
+                                                                <input type="text" class="form-control" id="tujuan_dari" name="tujuan_dari" placeholder="Masukkan kota asal" value="{{ $trucking['tujuan_dari'] }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6" >
                                                             <div class="form-group">
                                                                 <label for="customer">Kota Tujuan</label>
-                                                                <input type="text" class="form-control" id="tujuan_ke" name="tujuan_ke" placeholder="Masukkan kota tujuan">
+                                                                <input type="text" class="form-control" id="tujuan_ke" name="tujuan_ke" placeholder="Masukkan kota tujuan" value="{{ $trucking['tujuan_ke'] }}">
                                                             </div>
                                                         </div>     
                                                     </div>
@@ -86,13 +86,13 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="sopir">Jumlah BOP</label>
-                                                                <input type="number" class="form-control" id="jumlah_bop" name="jumlah_bop" placeholder="Masukkan jumlah BOP">
+                                                                <input type="number" class="form-control" id="jumlah_bop" name="jumlah_bop" placeholder="Masukkan jumlah BOP" value="{{ $trucking['jumlah_bop'] }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6" >
                                                             <div class="form-group">
                                                                 <label for="customer">Jumlah Tagihan</label>
-                                                                <input type="number" class="form-control" id="tagihan" name="tagihan" placeholder="Masukkan jumlah tagihan">
+                                                                <input type="number" class="form-control" id="tagihan" name="tagihan" placeholder="Masukkan jumlah tagihan" value="{{ $trucking['tagihan'] }}">
                                                             </div>
                                                         </div>     
                                                     </div>
@@ -105,9 +105,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- <h3> Revenue didapat dari Tagihan : 1,1 <br>
-                                                    Profit Didapat dari Revenue - Jumlah BOP
-                                                  </h3> -->
                                             </form>
                                         </div>
                                     </div>
