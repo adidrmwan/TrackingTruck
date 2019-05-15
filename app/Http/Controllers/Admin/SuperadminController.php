@@ -13,10 +13,4 @@ class SuperadminController extends Controller
     public function create() {
         return view('superadmin.create');
     }
-    public function admin() {
-        return view('admin.index');
-    }
-    public function admin_create() {
-        return view('admin.create');
-    }
 }

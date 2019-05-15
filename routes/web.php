@@ -22,14 +22,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/gm', 'trackingController@gm')->name('gm');
-Route::get('/finance', 'trackingController@finance');
-Route::get('/superadmin', 'TrackingController@superadmin')->name('superadmin');
-Route::get('/superadmin/create', 'TrackingController@superadmin_create')->name('superadmin.create');
-Route::resource('tracking','TrackingController');
-Route::get('/admin', 'trackingController@superadmin')->name('superadmin');
-Route::get('/admin/create', 'trackingController@superadmin_create')->name('superadmin.create');
->>>>>>> 8aa4d01beadb21ccd5f5821f65042f8bb4e2a393
+
+Route::get('/admin', 'TruckingController@superadmin')->name('superadmin');
+Route::get('/admin/create', 'TruckingController@superadmin_create')->name('superadmin.create');
 
 // Route untuk user : superadmin
 Route::group(['prefix' => 'superadmin', 'middleware' => ['auth','role:superadmin']], function(){
@@ -38,9 +33,11 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['auth','role:superadmin
 });
 
 // Route untuk user : admin
+Route::resource('trucking','TruckingController');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']], function(){
 	Route::get('/', function(){
-		return redirect()->route('tracking.index');
+		return redirect()->route('trucking.index');
 	})->name('admin.dashboard');
 });
 

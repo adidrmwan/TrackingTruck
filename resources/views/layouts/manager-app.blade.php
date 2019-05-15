@@ -45,67 +45,7 @@
 <body>
     <div id="wrapper">
         <div class="header">
-            <nav class="navbar   navbar-site navbar-default" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a href="/" class="navbar-brand logo logo-title">
-                            <span class="logo-icon"><i></i> </span>Samudera <span>Indonesia </span> </a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-left">
-                            @if(Auth::guest())
-                            
-                            @else
-                                @if(Auth::user())
-                                <!-- <li><a href="/search">Browse Jobs</a></li> -->
-                                @endif
-                            @endif
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            
-                            <li>
-                                 <a href="/"> <b> Home </b> </a>
-                            </li>
-
-                         
-
-                            @if (Auth::guest())
-                                <li><a href="/login">Masuk</a></li>
-                                <li><a href="/register">Daftar</a></li>
-                                <!-- {{-- <li class="postadd"><a class="btn btn-block btn-border btn-post btn-danger" href="/job/create">Post A Job</a></li> --}} -->
-                            @else
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        Signout <i class="glyphicon glyphicon-off"></i>
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                                
-                               {{--  @if(Auth::guest())
-                                    <li class="postadd"><a class="btn btn-block btn-border btn-post btn-danger" href="/job/create">Post A Job</a></li>
-                                @else
-                                    @if(Auth::user())
-                                        <li class="postadd"><a class="btn btn-block btn-border btn-post btn-danger" href="/job/create">Post A Job</a></li>
-                                    @endif
-                                @endif --}}
-                            @endif
-                        </ul>
-                    </div>
-                    {{-- /.nav-collapse  --}}
-                </div>
-                {{-- /.container-fluid --}}
-            </nav>
+            @include('layouts.manager-navbar')
         </div>
         {{-- /.header --}}
 
