@@ -22,11 +22,11 @@
                     <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                         <span>{{ $username }}</span>
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                       <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                            Logout
+                                 document.getElementById('logout-form').submit();" style="margin-left: 15px; color: black;">
+                                 Logout
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
