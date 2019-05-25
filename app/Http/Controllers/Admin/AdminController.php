@@ -19,14 +19,14 @@ class AdminController extends Controller
     {
         $username = Auth::user()->name;
         $trucking = Trucking::all();
-        return view ('admin.index', compact('username'))
+        return view ('user-admin.index', compact('username'))
                 ->with('trucking', json_decode($trucking, true));
     }
 
     public function create()
     {
         $username = Auth::user()->name;
-        return view ('admin.create', compact('username'));
+        return view ('user-admin.create', compact('username'));
     }
 
     public function store(Request $request)
@@ -57,10 +57,26 @@ class AdminController extends Controller
             $trucking->status = 0;
             $trucking->save();
             
-            return redirect()->route('admin.index');
+            return redirect()->route('admin.show', ['id' => $trucking->id_trucking])
+                             ->with('success', 'Data Konsumen berhasil ditambah!');
         } catch (Exception $e) {
             return redirect()->route('home');
         }
 
+    }
+
+    public function show($id)
+    {
+        $username = Auth::user()->name;
+        $trucking = Trucking::findOrFail($id);
+        return view ('user-admin.show', compact('username'))
+                ->with('trucking', json_decode($trucking, true));
+    }
+
+    public function createVendor($id)
+    {
+        dd($id);
+        $username = Auth::user()->name;
+        return view ('user-admin.create-vendor', compact('username'));
     }
 }

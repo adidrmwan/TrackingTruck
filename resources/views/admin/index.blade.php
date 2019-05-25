@@ -79,22 +79,15 @@
                                             </div>
                                             <div class="tab-pane" id="2">
                                                 <div class="table-responsive">
-                                                    <table class="table table-bordered">
-                                                        <tr style="text-align: center;">
-                                                            <th colspan="6" style="text-align: center;">Daftar Vendor</th>
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <th style="width: 15%">Nama Vendor</th>
-                                                            <th style="width: 15%">Alamat</th>
-                                                            <th style="width: 15%">Jabatan</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Adi</th>
-                                                            <th>Keputih</th>
-                                                            <th>Direktur Utama</th>
-                                                        </tr>
-                                                    </table>
+                                                    <table class="table table-bordered" id="table">
+                               <thead>
+                                  <tr>
+                                     <th>Id</th>
+                                     <th>Name</th>
+                                     <th>Email</th>
+                                  </tr>
+                               </thead>
+                            </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -108,4 +101,18 @@
             
         </div>
     </div>
+    <script>
+         $(function() {
+               $('#table').DataTable({
+               processing: true,
+               serverSide: true,
+               ajax: '{{ url('admin/getTruckingData') }}',
+               columns: [
+                        { data: 'id_trucking', name: 'id' },
+                        { data: 'no_jo', name: 'name' },
+                        { data: 'no_kendaraan', name: 'email' }
+                     ]
+            });
+         });
+    </script>
 @endsection
