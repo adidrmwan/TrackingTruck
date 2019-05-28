@@ -125,4 +125,19 @@ class FinanceManagerController extends Controller
             return redirect()->route('home');
         }
     }
+
+    public function decline($id)
+    {
+        try {
+            $username = Auth::user()->name;
+            $trucking = Trucking::find($id);
+            $trucking->status = 3;
+            $trucking->update();
+
+            return redirect()->back();
+            
+        } catch (Exception $e) {
+            return redirect()->route('home');
+        }
+    }
 }

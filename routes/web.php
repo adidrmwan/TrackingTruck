@@ -40,7 +40,7 @@ Route::group(['prefix' => 'finance', 'middleware' => ['auth','role:finance_manag
 		Route::get('create', 'FinanceManagerController@create')->name('finance_manager.create');
 		Route::post('store', 'FinanceManagerController@store')->name('finance_manager.store');
 		Route::get('accept/{id}', 'FinanceManagerController@accept')->name('finance_manager.accept');
-		Route::get('reject/{id}', 'FinanceManagerController@reject')->name('finance_manager.reject');
+		Route::get('decline/{id}', 'FinanceManagerController@decline')->name('finance_manager.decline');
 		Route::get('edit/{id}', 'FinanceManagerController@edit')->name('finance_manager.edit');
 		Route::post('update/{id}', 'FinanceManagerController@update')->name('finance_manager.update');
 
