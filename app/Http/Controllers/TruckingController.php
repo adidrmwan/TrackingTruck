@@ -56,7 +56,7 @@ class TruckingController extends Controller
             $trucking->status = 0;
             $trucking->save();
             
-            return redirect()->route('operator_trucking.index');
+            return redirect()->route('operator_trucking.index')->with('success', 'Data Konsumen berhasil ditambah!');
         } catch (Exception $e) {
             return redirect()->route('home');
         }

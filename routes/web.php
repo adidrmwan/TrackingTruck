@@ -65,3 +65,6 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['auth','role:superadmin
 	Route::get('create', 'Admin\SuperadminController@create')->name('superadmin.create');
 });
 
+Route::get('/json-regencies','AlamatController@regencies');
+Route::get('/json-districts', 'AlamatController@districts');
+Route::get('/json-village', 'AlamatController@villages');

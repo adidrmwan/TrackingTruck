@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\st_provinsi;
 use App\Models\Trucking;
+use App\Models\Vendor;
 use Auth;
 
 class AdminController extends Controller
@@ -75,8 +77,28 @@ class AdminController extends Controller
 
     public function createVendor($id)
     {
-        dd($id);
         $username = Auth::user()->name;
-        return view ('user-admin.create-vendor', compact('username'));
+        $provinsi = st_provinsi::all();
+        return view ('user-admin.create-vendor', compact('username', 'id'))
+                ->with('provinsi', json_decode($provinsi, true));
+    }
+
+    public function storeVendor($id, Request $request)
+    {
+        $username = Auth::user()->name;
+        $vendor = new Vendor;
+        $vendor->id_trucking = $id;
+        $vendor->vendor_name = $request->input('vendor_name');
+        $vendor->vendor_address = $request->input('vendor_address');
+        $vendor->id_provinsi = $request->input('id_provinsi');
+        $vendor->id_kabkota = $request->input('id_kabkota');
+        $vendor->id_kecamatan = $request->input('id_kecamatan');
+        $vendor->id_kelurahan = $request->input('id_kelurahan');
+        $vendor->kode_pos = $request->input('kode_pos');
+        $vendor->entry_user = Auth::user()->id;
+        $vendor->save();
+
+        return redirect()->route('admin.index')
+                             ->with('success', 'Data Vendor berhasil ditambah!');
     }
 }
