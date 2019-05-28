@@ -25,8 +25,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']], function(){
 	Route::namespace('Admin')->group(function () {
 		Route::get('/', 'AdminController@index')->name('admin.index');
-		Route::get('create', 'AdminController@create')->name('admin.create');
-		Route::post('store', 'AdminController@store')->name('admin.store');
+		Route::get('create/konsumen', 'AdminController@create')->name('admin.create');
+		Route::post('store/konsumen', 'AdminController@store')->name('admin.store');
+		Route::get('show/{id}', 'AdminController@show')->name('admin.show');
+		Route::get('create/vendor/{id}', 'AdminController@createVendor')->name('admin.create.vendor');
+		Route::post('store/vendor/{id}', 'AdminController@storeVendor')->name('admin.store.vendor');
 	});
 });
 
@@ -62,3 +65,6 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['auth','role:superadmin
 	Route::get('create', 'Admin\SuperadminController@create')->name('superadmin.create');
 });
 
+Route::get('/json-regencies','AlamatController@regencies');
+Route::get('/json-districts', 'AlamatController@districts');
+Route::get('/json-village', 'AlamatController@villages');
