@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Trucking;
+use App\Models\Vendor;
+use App\Models\st_provinsi;
+use App\Models\st_kabkota;
+use App\Models\st_kecamatan;
+use App\Models\st_kelurahan;
 use Auth;
 
 class TruckingController extends Controller
@@ -17,8 +22,13 @@ class TruckingController extends Controller
     public function index()
     {
         $username = Auth::user()->name;
+        $total_konsumen = Trucking::count();
+        $total_vendor = Vendor::count();
+        $total_konsumen_diterima = Trucking::where('status', 2)->count('id_trucking');
+        $total_konsumen_ditolak = Trucking::where('status', 3)->count('id_trucking');
         $trucking = Trucking::all();
-        return view ('trucking.index', compact('username'))
+
+        return view ('trucking.index', compact('username', 'total_konsumen', 'total_vendor', 'total_konsumen_ditolak', 'total_konsumen_diterima'))
                 ->with('trucking', json_decode($trucking, true));
     }
 
@@ -53,7 +63,7 @@ class TruckingController extends Controller
             //perhitungan profit
             $provit = $revenue - $request->jumlah_bop;
             $trucking->provit = $provit;
-            $trucking->status = 0;
+            $trucking->status = '0';
             $trucking->save();
             
             return redirect()->route('operator_trucking.index')->with('success', 'Data Konsumen berhasil ditambah!');
@@ -63,49 +73,20 @@ class TruckingController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function showKonsumen($id)
     {
-        //
-    }
+        $username = Auth::user()->name;
+        $trucking = Trucking::findOrFail($id);
+        $vendor = Vendor::where('id_trucking', $id)->first();
+        $provinsi = ''; $kabkota = ''; $kecamatan = '';
+        if (isset($vendor)) {
+            $provinsi = st_provinsi::where('id', $vendor->id_provinsi)->first();
+            $kabkota = st_kabkota::where('id', $vendor->id_kabkota)->first();
+            $kecamatan = st_kecamatan::where('id', $vendor->id_kecamatan)->first();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view ('trucking.show-konsumen', compact('username', 'provinsi', 'kabkota', 'kecamatan', 'vendor'))
+                ->with('trucking', json_decode($trucking, true));
     }
 
     

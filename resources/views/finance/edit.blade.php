@@ -1,4 +1,4 @@
-@extends('user-admin.layouts.app-layout')
+@extends('finance.layouts.app-layout')
 
 @section('title', 'Dashboard')
 @section('mainContent')

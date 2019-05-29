@@ -1,4 +1,4 @@
-@extends('user-admin.layouts.app-layout')
+@extends('trucking.layouts.app-layout')
 
 @section('title', 'Dashboard')
 @section('mainContent')
