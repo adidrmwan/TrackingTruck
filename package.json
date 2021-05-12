@@ -19,7 +19,7 @@
         "lodash": "^4.17.4",
         "vue": "^2.5.7",
         "bootstrap-datepicker": "^1.7.1",
-        "chart.js": "^2.7.1",
+        "chart.js": "^2.9.4",
         "datatables": "^1.10.13",
         "easy-pie-chart": "^2.1.7",
         "file-loader": "^1.1.5",
